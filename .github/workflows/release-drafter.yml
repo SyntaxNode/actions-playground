@@ -2,13 +2,12 @@ name: Release Drafter
 
 on:
   push:
-    branches:
-      - master
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  update_release_draft:
+  release:
+    if: github.event.base_ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Get Version
